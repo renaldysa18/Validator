@@ -30,6 +30,7 @@ Or Maven:
 	    <artifactId>Validator</artifactId>
 	    <version>Version</version>
 </dependency>
+```
 
 <b>How to use this library</b>
 //initializing class validator
