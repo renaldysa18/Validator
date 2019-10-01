@@ -42,8 +42,8 @@ list of method :
 1. validasiLoginWithEmail
 2. validasiLoginWithUsername
 
-```
 <b>example</b>
+```
 validator.validasiLoginWithEmail(et_email_login.text.toString(), et_password_login.text.toString()){
     result: Boolean, message: String ->
           if(result){
