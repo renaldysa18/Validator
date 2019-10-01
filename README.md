@@ -37,10 +37,12 @@ Or Maven:
 val validator = Validator()
 
 after that you can use this library by calling the method you need
-- list of method
-validasiLoginWithEmail
-validasiLoginWithUsername
 
+list of method :
+1. validasiLoginWithEmail
+2. validasiLoginWithUsername
+
+```
 <b>example</b>
 validator.validasiLoginWithEmail(et_email_login.text.toString(), et_password_login.text.toString()){
     result: Boolean, message: String ->
@@ -50,6 +52,7 @@ validator.validasiLoginWithEmail(et_email_login.text.toString(), et_password_log
 //use the return message to find out the error
           }
 }
+```
 
 Author
 ------
