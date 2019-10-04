@@ -1,6 +1,6 @@
 # Validator
 
-<b>Version 0.0.2</b>
+<b>Version 0.0.3</b>
 
 library to validate input from user input especially in the authentication section
 
@@ -41,10 +41,11 @@ after that you can use this library by calling the method you need
 list of method :
 1. validasiLoginWithEmail
 2. validasiLoginWithUsername
+3. validasiSignUp (there are three choices)
 
 <b>example</b>
 ```
-validator.validasiLoginWithEmail(et_email_login.text.toString(), et_password_login.text.toString()){
+validator.validasiLoginWithEmail(email, password){
     result: Boolean, message: String ->
           if(result){
 //do the right stuff
