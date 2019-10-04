@@ -1,13 +1,19 @@
 package com.redveloper.form_validator
 
+import android.content.Context
 import android.util.Patterns
 
-class Validator {
-    fun validasiLoginWithUsername(username: String, password: String, callback: (result: Boolean, message: String) -> Unit){
-        if(!username.isEmpty()){
-            if(username.length >= 3){
-                if(!password.isEmpty()){
-                    if(password.length >= 8){
+class Validator(context: Context) {
+    //login - username validasi
+    fun validasiLoginWithUsername(
+        username: String,
+        password: String,
+        callback: (result: Boolean, message: String) -> Unit
+    ) {
+        if (!username.isEmpty()) {
+            if (username.length >= 3) {
+                if (!password.isEmpty()) {
+                    if (password.length >= 8) {
                         callback.invoke(true, "login successful")
                     } else {
                         callback.invoke(false, "password must be at least 8 characters")
@@ -23,11 +29,16 @@ class Validator {
         }
     }
 
-    fun validasiLoginWithEmail(email: String, password: String, callback: (result: Boolean, message: String) -> Unit){
-        if(!email.isEmpty()){
-            if(Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-                if(!password.isEmpty()){
-                    if(password.length >= 8){
+    //login - email validasi
+    fun validasiLoginWithEmail(
+        email: String,
+        password: String,
+        callback: (result: Boolean, message: String) -> Unit
+    ) {
+        if (!email.isEmpty()) {
+            if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                if (!password.isEmpty()) {
+                    if (password.length >= 8) {
                         callback.invoke(true, "login successful")
                     } else {
                         callback.invoke(false, "password must be at least 8 characters")
@@ -35,11 +46,126 @@ class Validator {
                 } else {
                     callback.invoke(false, "password is empety")
                 }
-            } else{
+            } else {
                 callback.invoke(false, "email is not valid")
             }
         } else {
             callback.invoke(false, "email is empety")
+        }
+    }
+
+    //signup - email, password
+    fun validasiSignUp(
+        email: String,
+        password: String,
+        callback: (result: Boolean, message: String) -> Unit
+    ) {
+        if (!email.isEmpty()) {
+            if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                if (!password.isEmpty()) {
+                    if (password.length >= 8) {
+                        callback.invoke(true, "login successful")
+                    } else {
+                        callback.invoke(false, "password must be at least 8 characters")
+                    }
+                } else {
+                    callback.invoke(false, "password is empety")
+                }
+            } else {
+                callback.invoke(false, "email is not valid")
+            }
+        } else {
+            callback.invoke(false, "email is empety")
+        }
+    }
+
+    //signup - name, email, password, password conf
+    fun validasiSignUp(
+        name: String,
+        email: String,
+        password: String,
+        password_conf: String,
+        callback: (result: Boolean, message: String) -> Unit
+    ) {
+        if (!name.isEmpty()) {
+            if (name.length >= 3) {
+                if (!email.isEmpty()) {
+                    if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                        if (!password.isEmpty()) {
+                            if (password.length >= 8) {
+                                if (password_conf.equals(password)) {
+                                    callback.invoke(true, "login successful")
+                                } else {
+                                    callback.invoke(false, "passwords are not the same")
+                                }
+                            } else {
+                                callback.invoke(false, "password must be at least 8 characters")
+                            }
+                        } else {
+                            callback.invoke(false, "password is empety")
+                        }
+                    } else {
+                        callback.invoke(false, "email is not valid")
+                    }
+                } else {
+                    callback.invoke(false, "email is empety")
+                }
+            } else {
+                callback.invoke(false, "name must be at least 3 characters")
+            }
+        } else {
+            callback.invoke(false, "name is empety")
+        }
+    }
+
+    //signup - name,email, password, password conf, phone
+    fun validasiSignUp(
+        name: String,
+        email: String,
+        phone: String,
+        password: String,
+        password_conf: String,
+        callback: (result: Boolean, message: String) -> Unit
+    ) {
+        if (!name.isEmpty()) {
+            if (name.length >= 3) {
+                if (!email.isEmpty()) {
+                    if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                        if (!phone.isEmpty()) {
+                            if (phone.length >= 8) {
+                                if (!password.isEmpty()) {
+                                    if (password.length >= 8) {
+                                        if (password_conf.equals(password)) {
+                                            callback.invoke(true, "login successful")
+                                        } else {
+                                            callback.invoke(false, "passwords are not the same")
+                                        }
+                                    } else {
+                                        callback.invoke(
+                                            false,
+                                            "password must be at least 8 characters"
+                                        )
+                                    }
+                                } else {
+                                    callback.invoke(false, "password is empety")
+                                }
+                            } else {
+                                callback.invoke(false, "phone must be at least 8 characters")
+                            }
+                        } else {
+                            callback.invoke(false, "phone is empety")
+                        }
+                    } else {
+                        callback.invoke(false, "email is not valid")
+                    }
+                } else {
+                    callback.invoke(false, "email is empety")
+                }
+            } else {
+                callback.invoke(false, "name must be at least 3 characters")
+            }
+        } else {
+            callback.invoke(false, "name is empety")
         }
     }
 }
