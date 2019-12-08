@@ -39,18 +39,18 @@ class Validator(context: Context) {
             if (Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                 if (!password.isEmpty()) {
                     if (password.length >= 8) {
-                        callback.invoke(true, "login successful")
+                        callback.invoke(true, "login berhasil")
                     } else {
-                        callback.invoke(false, "password must be at least 8 characters")
+                        callback.invoke(false, "kata sandi minimal 8 karekter")
                     }
                 } else {
-                    callback.invoke(false, "password is empety")
+                    callback.invoke(false, "kata sandi masih kosong")
                 }
             } else {
-                callback.invoke(false, "email is not valid")
+                callback.invoke(false, "format email tidak benar")
             }
         } else {
-            callback.invoke(false, "email is empety")
+            callback.invoke(false, "email masih kosong")
         }
     }
 
@@ -136,36 +136,36 @@ class Validator(context: Context) {
                                 if (!password.isEmpty()) {
                                     if (password.length >= 8) {
                                         if (password_conf.equals(password)) {
-                                            callback.invoke(true, "login successful")
+                                            callback.invoke(true, "login berhasil")
                                         } else {
-                                            callback.invoke(false, "passwords are not the same")
+                                            callback.invoke(false, "kata sandi tidak sama")
                                         }
                                     } else {
                                         callback.invoke(
                                             false,
-                                            "password must be at least 8 characters"
+                                            "kata sandi minimal 8 karakter"
                                         )
                                     }
                                 } else {
-                                    callback.invoke(false, "password is empety")
+                                    callback.invoke(false, "kata sandi masih kosong")
                                 }
                             } else {
-                                callback.invoke(false, "phone must be at least 8 characters")
+                                callback.invoke(false, "nomor telepon minimal 8 karakter")
                             }
                         } else {
-                            callback.invoke(false, "phone is empety")
+                            callback.invoke(false, "nomor telepon masih kosong")
                         }
                     } else {
-                        callback.invoke(false, "email is not valid")
+                        callback.invoke(false, "format email tidak benar")
                     }
                 } else {
-                    callback.invoke(false, "email is empety")
+                    callback.invoke(false, "email masih kosong")
                 }
             } else {
-                callback.invoke(false, "name must be at least 3 characters")
+                callback.invoke(false, "nama minimal 3 karakter")
             }
         } else {
-            callback.invoke(false, "name is empety")
+            callback.invoke(false, "nama masih kosong")
         }
     }
 }
